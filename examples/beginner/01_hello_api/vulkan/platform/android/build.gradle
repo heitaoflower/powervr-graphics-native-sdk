@@ -1,0 +1,111 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.application'
+
+File pvrSdkDir = file("${project.buildDir}/../../../../../../../")
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        applicationId "com.powervr.VulkanHelloAPI"
+        minSdkVersion 15
+        targetSdkVersion 21
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            jniDebuggable true
+        }
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jni.srcDirs= []
+            jniLibs.srcDir 'libs'
+
+        }
+    }
+
+    FileCollection tree = files(
+            "${pvrSdkDir}/examples/beginner/01_hello_api/vulkan/frag.spv",
+            "${pvrSdkDir}/examples/beginner/01_hello_api/vulkan/vert.spv",
+    )
+
+    task copyAssets(type: Copy){
+        from tree
+        into 'assets'
+    }
+
+    String ndkBuildCommand = 'ndk-build';
+
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        ndkBuildCommand = 'ndk-build.cmd'
+    }
+
+
+    task ndkBuild(type: Exec, dependsOn:[copyAssets]) {
+        commandLine ndkBuildCommand, 'V=1','-j'
+    }
+
+    task ndkBuildClean(type: Exec) {
+        commandLine ndkBuildCommand, '-j', 'clean'
+    }
+
+    task copyToBin(type: Copy) {
+        from 'build/outputs/apk/'
+        into 'bin/'
+        include('*.apk')
+    }
+
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn ndkBuild
+    }
+
+    tasks.whenTaskAdded { task ->
+        if (task.name == 'assembleRelease') {
+            task.doFirst {
+                copyToBin.execute()
+            }
+        }
+    }
+
+    clean.dependsOn ndkBuildClean
+    clean {
+        doLast() {
+            delete "assets"
+            delete "obj"
+            delete "bin"
+        }
+    }
+
+    preBuild.dependsOn copyAssets
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
