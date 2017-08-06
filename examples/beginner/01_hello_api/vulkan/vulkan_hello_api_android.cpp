@@ -416,10 +416,10 @@ public:
 	bool LoadFailed();
 	bool disableErrorPrint; //!< Set to true to avoid printing errors
 
-	/*!*********************************************************************************************************************
-	\brief   Load a library with the specified filename.
-	\param   libraryPath The path to find the library (name or Path+name).
-	***********************************************************************************************************************/
+							/*!*********************************************************************************************************************
+							\brief   Load a library with the specified filename.
+							\param   libraryPath The path to find the library (name or Path+name).
+							***********************************************************************************************************************/
 	NativeLibrary(const std::string& LibPath)
 	{
 		size_t start = 0;
@@ -531,7 +531,7 @@ bool vk::initVulkanInstance(VkInstance instance)
 	PVR_VULKAN_GET_INSTANCE_POINTER(instance, GetPhysicalDeviceDisplayPropertiesKHR);
 	PVR_VULKAN_GET_INSTANCE_POINTER(instance, GetDisplayModePropertiesKHR);
 	PVR_VULKAN_GET_INSTANCE_POINTER(instance, CreateDisplayPlaneSurfaceKHR);
-	
+
 	PVR_VULKAN_GET_INSTANCE_POINTER(instance, EnumerateDeviceLayerProperties);
 	PVR_VULKAN_GET_INSTANCE_POINTER(instance, EnumerateDeviceExtensionProperties);
 	PVR_VULKAN_GET_INSTANCE_POINTER(instance, GetPhysicalDeviceSurfaceCapabilitiesKHR);
@@ -690,17 +690,17 @@ bool vk::initVulkanDevice(VkDevice device)
 }
 
 VKAPI_ATTR VkBool32 VKAPI_CALL CustomDebugReportCallback(
-  VkDebugReportFlagsEXT       flags,
-  VkDebugReportObjectTypeEXT  objectType,
-  uint64_t                    object,
-  size_t                      location,
-  int32_t                     messageCode,
-  const char*                 pLayerPrefix,
-  const char*                 pMessage,
-  void*                       pUserData)
+	VkDebugReportFlagsEXT       flags,
+	VkDebugReportObjectTypeEXT  objectType,
+	uint64_t                    object,
+	size_t                      location,
+	int32_t                     messageCode,
+	const char*                 pLayerPrefix,
+	const char*                 pMessage,
+	void*                       pUserData)
 {
 	LOGE("LAYER_VALIDATION: %s",
-	     pMessage);
+		pMessage);
 
 	return VK_FALSE;
 }
@@ -738,7 +738,7 @@ struct App
 	void initColorBlendAttachmentState(VkPipelineColorBlendAttachmentState& state);
 	bool initDevice(bool enableLayers);
 	bool getMemoryTypeIndex(uint32_t typeBits, VkMemoryPropertyFlagBits properties,
-	                        uint32_t& outTypeIndex);
+		uint32_t& outTypeIndex);
 	void initGlobalState();
 	void initPostPresentBarrierCommandBuffer();
 	void deinitGlobalState();
@@ -1027,8 +1027,8 @@ static void createPipeline(App& app)
 	sPipelineLayoutCreateInfo.setLayoutCount = 0;
 	sPipelineLayoutCreateInfo.pSetLayouts = NULL;
 	vkSuccessOrDie(vk::CreatePipelineLayout(app.platformHandles->context.device,
-	                                        &sPipelineLayoutCreateInfo, NULL, &app.application->emptyPipelayout),
-	               "Failed to create pipeline layout");
+		&sPipelineLayoutCreateInfo, NULL, &app.application->emptyPipelayout),
+		"Failed to create pipeline layout");
 
 	static VkSampleMask sampleMask = 0xffffffff;
 	pipeCreate.ms.pSampleMask = &sampleMask;
@@ -1083,8 +1083,8 @@ static void createPipeline(App& app)
 	pipeCreate.shaderStages[1].pName = "main";
 	attachments[0].blendEnable = VK_FALSE;
 	vkSuccessOrDie(vk::CreateGraphicsPipelines(app.platformHandles->context.device, VK_NULL_HANDLE, 1,
-	               &pipeCreate.vkPipeInfo, NULL, &app.application->opaquePipeline),
-	               "Failed to create the graphicsPipeline");
+		&pipeCreate.vkPipeInfo, NULL, &app.application->opaquePipeline),
+		"Failed to create the graphicsPipeline");
 	vk::DestroyShaderModule(app.platformHandles->context.device, vertexShaderModule, NULL);
 	vk::DestroyShaderModule(app.platformHandles->context.device, fragmentShaderModule, NULL);
 }
@@ -1199,8 +1199,8 @@ static void initOnScreenFbo(App& app)
 	renderPassCreateInfo.pDependencies = NULL;
 
 	vkSuccessOrDie(vk::CreateRenderPass(app.platformHandles->context.device, &renderPassCreateInfo,
-	                                    NULL, &app.application->renderPass),
-	               "Failed to create the renderpass");
+		NULL, &app.application->renderPass),
+		"Failed to create the renderpass");
 
 	for (uint32_t i = 0; i < app.displayHandle->swapChainLength; i++)
 	{
@@ -1222,8 +1222,8 @@ static void initOnScreenFbo(App& app)
 		fbCreateInfo.height = app.displayHandle->displayExtent.height;
 
 		vkSuccessOrDie(vk::CreateFramebuffer(app.platformHandles->context.device, &fbCreateInfo, NULL,
-		                                     &app.application->framebuffer[i]),
-		               "Failed to create the framebuffer");
+			&app.application->framebuffer[i]),
+			"Failed to create the framebuffer");
 	}
 }
 
@@ -1269,7 +1269,7 @@ void deinit(App& app)
 	app.platformHandles->fenceAcquire[app.displayHandle->swapChainLength] = VK_NULL_HANDLE;
 
 	vk::FreeCommandBuffers(app.platformHandles->context.device, app.platformHandles->commandPool, app.displayHandle->swapChainLength,
-	                       app.platformHandles->postPresentCmdBuffer);
+		app.platformHandles->postPresentCmdBuffer);
 
 	vk::DestroyRenderPass(app.platformHandles->context.device, app.application->renderPass, NULL);
 	vk::DestroyPipelineLayout(app.platformHandles->context.device, app.application->emptyPipelayout, NULL);
@@ -1298,7 +1298,7 @@ void drawFrame(App& app)
 	sSubmitInfo.pCommandBuffers = &app.application->cmdBuffer[app.platformHandles->swapIndex];
 
 	vk::QueueSubmit(app.platformHandles->graphicsQueue, 1, &sSubmitInfo,
-	                app.platformHandles->fenceRender[app.platformHandles->swapIndex]);
+		app.platformHandles->fenceRender[app.platformHandles->swapIndex]);
 	VkPresentInfoKHR presentInfo = {};
 	presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
 	presentInfo.pSwapchains = &app.displayHandle->swapChain;
@@ -1315,21 +1315,21 @@ void drawFrame(App& app)
 	// frame we have wait for this semaphore in postAcquireTransition so it is guranteed of reuse.
 	app.platformHandles->currentImageAcqSem = (app.platformHandles->currentImageAcqSem + 1) % (app.displayHandle->swapChainLength + 1);
 	vkSuccessOrDie(vk::AcquireNextImageKHR(app.platformHandles->context.device,
-	                                       app.displayHandle->swapChain, uint64_t(-1),
-	                                       app.platformHandles->semaphoreImageAcquired[app.platformHandles->currentImageAcqSem],
-	                                       VK_NULL_HANDLE, &app.platformHandles->swapIndex), "AcquireNextImage error");
+		app.displayHandle->swapChain, uint64_t(-1),
+		app.platformHandles->semaphoreImageAcquired[app.platformHandles->currentImageAcqSem],
+		VK_NULL_HANDLE, &app.platformHandles->swapIndex), "AcquireNextImage error");
 	// transition to color attachment
 	app.submitPostPresentBarrier(app.platformHandles->swapIndex);
 
 	// make sure the fenceRender is avaiable to be used by the commandbuffers of the application
 	vk::WaitForFences(app.platformHandles->context.device, 1,
-	                  &app.platformHandles->fenceRender[app.platformHandles->swapIndex], true, uint64_t(-1));
+		&app.platformHandles->fenceRender[app.platformHandles->swapIndex], true, uint64_t(-1));
 	vk::ResetFences(app.platformHandles->context.device, 1,
-	                &app.platformHandles->fenceRender[app.platformHandles->swapIndex]);
+		&app.platformHandles->fenceRender[app.platformHandles->swapIndex]);
 }
 
 static inline std::vector<const char*> filterExtensions(const std::vector<VkExtensionProperties>& vec,
-    const char* const* filters, uint32_t numfilters)
+	const char* const* filters, uint32_t numfilters)
 {
 	std::vector<const char*> retval;
 	for (uint32_t i = 0; i < vec.size(); ++i)
@@ -1347,7 +1347,7 @@ static inline std::vector<const char*> filterExtensions(const std::vector<VkExte
 }
 
 static inline std::vector<const char*> filterLayers(const std::vector<VkLayerProperties>& vec,
-    const char* const* filters, uint32_t numfilters)
+	const char* const* filters, uint32_t numfilters)
 {
 	std::vector<const char*> retval;
 	for (uint32_t i = 0; i < vec.size(); ++i)
@@ -1365,12 +1365,12 @@ static inline std::vector<const char*> filterLayers(const std::vector<VkLayerPro
 
 void App::initVkInstanceAndPhysicalDevice(bool enableLayers, bool enableExtensions)
 {
-	if(!vk::initVulkan())
+	if (!vk::initVulkan())
 	{
 		LOGE("Unable to initialise Vulkan!");
 		exit(0);
 	}
-	
+
 	VkApplicationInfo appInfo = {};
 	VkInstanceCreateInfo instanceCreateInfo = {};
 
@@ -1404,14 +1404,14 @@ void App::initVkInstanceAndPhysicalDevice(bool enableLayers, bool enableExtensio
 	{
 		uint32_t enabledLayerCount = 0;
 		vkSuccessOrDie(vk::EnumerateInstanceLayerProperties(&enabledLayerCount, NULL),
-		               "Failed to enumerate instance layer properties");
+			"Failed to enumerate instance layer properties");
 
 		std::vector<VkLayerProperties> layers; layers.resize(enabledLayerCount);
 		vkSuccessOrDie(vk::EnumerateInstanceLayerProperties(&enabledLayerCount, layers.data()),
-		               "Failed to enumerate instance layer properties");
+			"Failed to enumerate instance layer properties");
 
 		enabledLayers = filterLayers(layers, instanceValidationLayers, sizeof(instanceValidationLayers)
-		                             / sizeof(instanceValidationLayers[0]));
+			/ sizeof(instanceValidationLayers[0]));
 
 		instanceCreateInfo.ppEnabledLayerNames = enabledLayers.data();
 		instanceCreateInfo.enabledLayerCount = (uint32_t)enabledLayers.size();
@@ -1422,14 +1422,14 @@ void App::initVkInstanceAndPhysicalDevice(bool enableLayers, bool enableExtensio
 	{
 		uint32_t enabledExtensionCount = 0;
 		vkSuccessOrDie(vk::EnumerateInstanceExtensionProperties(NULL, &enabledExtensionCount, NULL),
-		               "Failed to enumerate instance extension properties");
+			"Failed to enumerate instance extension properties");
 
 		std::vector<VkExtensionProperties> extensions; extensions.resize(enabledExtensionCount);
 		vkSuccessOrDie(vk::EnumerateInstanceExtensionProperties(NULL, &enabledExtensionCount, extensions.data()),
-		               "Failed to enumerate instance extension properties");
+			"Failed to enumerate instance extension properties");
 
 		enabledExtensions = filterExtensions(extensions, instanceExtNames, sizeof(instanceExtNames)
-		                                     / sizeof(instanceExtNames[0]));
+			/ sizeof(instanceExtNames[0]));
 
 		instanceCreateInfo.ppEnabledExtensionNames = enabledExtensions.data();
 		instanceCreateInfo.enabledExtensionCount = (uint32_t)enabledExtensions.size();
@@ -1437,34 +1437,34 @@ void App::initVkInstanceAndPhysicalDevice(bool enableLayers, bool enableExtensio
 
 	// create the vk instance
 	vkSuccessOrDie(vk::CreateInstance(&instanceCreateInfo, NULL, &this->platformHandles->context.instance),
-	               "Failed to create instance");
-	
+		"Failed to create instance");
+
 	vk::initVulkanInstance(this->platformHandles->context.instance);
-	
+
 	vkSuccessOrDie(vk::EnumeratePhysicalDevices(this->platformHandles->context.instance, &gpuCount, NULL), "");
 	LOGI("Number of Vulkan Physical devices: [%d]", gpuCount);
 
 	vkSuccessOrDie(vk::EnumeratePhysicalDevices(this->platformHandles->context.instance, &gpuCount,
-	               &this->platformHandles->context.physicalDevice), "");
+		&this->platformHandles->context.physicalDevice), "");
 
 	if (vk::CreateDebugReportCallbackEXT &&
-	    vk::DebugReportMessageEXT &&
-	    vk::DestroyDebugReportCallbackEXT)
+		vk::DebugReportMessageEXT &&
+		vk::DestroyDebugReportCallbackEXT)
 	{
 		// Setup callback creation information
 		VkDebugReportCallbackCreateInfoEXT callbackCreateInfo;
 		callbackCreateInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT;
 		callbackCreateInfo.pNext = nullptr;
 		callbackCreateInfo.flags = VK_DEBUG_REPORT_ERROR_BIT_EXT |
-		                           VK_DEBUG_REPORT_WARNING_BIT_EXT |
-		                           VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT |
-		                           VK_DEBUG_REPORT_DEBUG_BIT_EXT;
+			VK_DEBUG_REPORT_WARNING_BIT_EXT |
+			VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT |
+			VK_DEBUG_REPORT_DEBUG_BIT_EXT;
 		callbackCreateInfo.pfnCallback = &CustomDebugReportCallback;
 		callbackCreateInfo.pUserData = nullptr;
 
 		// Register the callback
 		VkResult result = vk::CreateDebugReportCallbackEXT(this->platformHandles->context.instance, &callbackCreateInfo,
-		                  nullptr, &this->platformHandles->debugReportCallback);
+			nullptr, &this->platformHandles->debugReportCallback);
 
 		LOGE("debug callback result: %i", result);
 
@@ -1533,26 +1533,26 @@ inline bool App::initDevice(bool enableLayers)
 	{
 		uint32_t enabledLayerCount = 0;
 		vkSuccessOrDie(vk::EnumerateInstanceLayerProperties(&enabledLayerCount, NULL),
-		               "Failed to enumerate instance layer properties");
+			"Failed to enumerate instance layer properties");
 
 		std::vector<VkLayerProperties> layers; layers.resize(enabledLayerCount);
 		vkSuccessOrDie(vk::EnumerateInstanceLayerProperties(&enabledLayerCount, layers.data()),
-		               "Failed to enumerate instance layer properties");
+			"Failed to enumerate instance layer properties");
 
 		enabledLayers = filterLayers(layers, deviceValidationlayers, sizeof(deviceValidationlayers)
-		                             / sizeof(deviceValidationlayers[0]));
+			/ sizeof(deviceValidationlayers[0]));
 
 		deviceCreateInfo.ppEnabledLayerNames = enabledLayers.data();
 		deviceCreateInfo.enabledLayerCount = static_cast<uint32_t>(enabledLayers.size());
 	}
 
 	vkSuccessOrDie(vk::CreateDevice(this->platformHandles->context.physicalDevice, &deviceCreateInfo, NULL,
-	                                &this->platformHandles->context.device), "Vulkan Device Creation");
+		&this->platformHandles->context.device), "Vulkan Device Creation");
 	vk::initVulkanDevice(this->platformHandles->context.device);
 
 	// Gather physical device memory properties
 	vk::GetPhysicalDeviceMemoryProperties(this->platformHandles->context.physicalDevice,
-	                                      &this->platformHandles->deviceMemProperties);
+		&this->platformHandles->deviceMemProperties);
 	vk::GetDeviceQueue(this->platformHandles->context.device, 0, 0, &this->platformHandles->graphicsQueue);
 	return true;
 }
@@ -1561,20 +1561,20 @@ void App::initSwapChain()
 {
 	VkSurfaceCapabilitiesKHR surfaceCapabilities;
 	vkSuccessOrDie(vk::GetPhysicalDeviceSurfaceCapabilitiesKHR(this->platformHandles->context.physicalDevice, this->displayHandle->surface, &surfaceCapabilities),
-	               "Failed to get the surface capabilities");
+		"Failed to get the surface capabilities");
 
 	LOGI("Surface Capabilities:\n");
 	LOGI("Image count: %u - %u\n", surfaceCapabilities.minImageCount, surfaceCapabilities.maxImageCount);
 	LOGI("Array size: %u\n", surfaceCapabilities.maxImageArrayLayers);
 	LOGI("Image size (now): %dx%d\n", surfaceCapabilities.currentExtent.width, surfaceCapabilities.currentExtent.height);
 	LOGI("Image size (extent): %dx%d - %dx%d\n", surfaceCapabilities.minImageExtent.width, surfaceCapabilities.minImageExtent.height, surfaceCapabilities.maxImageExtent.width,
-	     surfaceCapabilities.maxImageExtent.height);
+		surfaceCapabilities.maxImageExtent.height);
 	LOGI("Usage: %x\n", surfaceCapabilities.supportedUsageFlags);
 	LOGI("Current transform: %u\n", surfaceCapabilities.currentTransform);
 
 	uint32_t formatCount = 0;
 	vk::GetPhysicalDeviceSurfaceFormatsKHR(this->platformHandles->context.physicalDevice, this->displayHandle->surface,
-	                                       &formatCount, NULL);
+		&formatCount, NULL);
 	VkSurfaceFormatKHR tmpformats[16]; std::vector<VkSurfaceFormatKHR> tmpFormatsVector;
 	VkSurfaceFormatKHR* allFormats = tmpformats;
 	if (formatCount > 16)
@@ -1583,7 +1583,7 @@ void App::initSwapChain()
 		allFormats = tmpFormatsVector.data();
 	}
 	vk::GetPhysicalDeviceSurfaceFormatsKHR(this->platformHandles->context.physicalDevice, this->displayHandle->surface,
-	                                       &formatCount, allFormats);
+		&formatCount, allFormats);
 
 	VkSurfaceFormatKHR format = allFormats[0];
 
@@ -1649,7 +1649,7 @@ void App::initSwapChain()
 
 	this->displayHandle->onscreenFbo.colorFormat = format.format;
 	this->displayHandle->displayExtent = surfaceCapabilities.currentExtent;
-	
+
 	this->displayHandle->swapChainLength = 2;
 	this->displayHandle->swapChainLength = std::max<uint32_t>(this->displayHandle->swapChainLength, surfaceCapabilities.minImageCount);
 	this->displayHandle->swapChainLength = std::min<uint32_t>(this->displayHandle->swapChainLength, surfaceCapabilities.maxImageCount);
@@ -1676,17 +1676,17 @@ void App::initSwapChain()
 	swapchainCreate.queueFamilyIndexCount = 0;
 	swapchainCreate.pQueueFamilyIndices = NULL;
 	vkSuccessOrDie(vk::CreateSwapchainKHR(this->platformHandles->context.device, &swapchainCreate,
-	                                      NULL, &this->displayHandle->swapChain), "Could not create the swap chain");
+		NULL, &this->displayHandle->swapChain), "Could not create the swap chain");
 	// get the number of swapchains
 	vkSuccessOrDie(vk::GetSwapchainImagesKHR(this->platformHandles->context.device, this->displayHandle->swapChain,
-	               &this->displayHandle->swapChainLength, NULL), "Could not get swapchain length");
+		&this->displayHandle->swapChainLength, NULL), "Could not get swapchain length");
 
 	LOGI("Number of Swap Chain Images: %d", this->displayHandle->swapChainLength);
-	
+
 	this->displayHandle->onscreenFbo.colorImages.resize(this->displayHandle->swapChainLength);
 	this->displayHandle->onscreenFbo.colorImageViews.resize(this->displayHandle->swapChainLength);
 	vkSuccessOrDie(vk::GetSwapchainImagesKHR(this->platformHandles->context.device, this->displayHandle->swapChain,
-	               &this->displayHandle->swapChainLength, &this->displayHandle->onscreenFbo.colorImages[0]), "Could not get swapchain images");
+		&this->displayHandle->swapChainLength, &this->displayHandle->onscreenFbo.colorImages[0]), "Could not get swapchain images");
 
 	//--- create the swapchain view
 	VkImageViewCreateInfo viewCreateInfo;
@@ -1712,7 +1712,7 @@ void App::initSwapChain()
 	{
 		viewCreateInfo.image = this->displayHandle->onscreenFbo.colorImages[i];
 		vkSuccessOrDie(vk::CreateImageView(this->platformHandles->context.device, &viewCreateInfo, NULL,
-		                                   &this->displayHandle->onscreenFbo.colorImageViews[i]), "create display image view");
+			&this->displayHandle->onscreenFbo.colorImageViews[i]), "create display image view");
 
 		// create the depth stencil image
 		VkImageCreateInfo dsCreateInfo = {};
@@ -1730,7 +1730,7 @@ void App::initSwapChain()
 		dsCreateInfo.flags = 0;
 		dsCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
 		dsCreateInfo.usage = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT |
-		                     (this->displayHandle->onscreenFbo.depthStencilHasStencil ? VK_IMAGE_ASPECT_STENCIL_BIT : 0);
+			(this->displayHandle->onscreenFbo.depthStencilHasStencil ? VK_IMAGE_ASPECT_STENCIL_BIT : 0);
 		dsCreateInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 		dsCreateInfo.pQueueFamilyIndices = 0;
 		dsCreateInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
@@ -1764,8 +1764,8 @@ void App::initSwapChain()
 		dsViewCreateInfo.subresourceRange.layerCount = 1;
 		dsViewCreateInfo.flags = 0;
 		vkSuccessOrDie(vk::CreateImageView(this->platformHandles->context.device, &dsViewCreateInfo,
-		                                   NULL, &this->displayHandle->onscreenFbo.depthStencilImageView[i]),
-		               "Create Depth stencil image view");
+			NULL, &this->displayHandle->onscreenFbo.depthStencilImageView[i]),
+			"Create Depth stencil image view");
 	}
 }
 
@@ -1781,38 +1781,38 @@ void App::initSynchronizationObjects()
 	for (uint32_t i = 0; i < this->displayHandle->swapChainLength; ++i)
 	{
 		vkSuccessOrDie(vk::CreateSemaphore(this->platformHandles->context.device, &semaphoreCreateInfo,
-		                                   NULL, &this->platformHandles->semaphoreFinishedRendering[i]),
-		               "Cannot create the Semaphore used to signal rendering finished");
+			NULL, &this->platformHandles->semaphoreFinishedRendering[i]),
+			"Cannot create the Semaphore used to signal rendering finished");
 		vkSuccessOrDie(vk::CreateSemaphore(this->platformHandles->context.device, &semaphoreCreateInfo,
-		                                   NULL, &this->platformHandles->semaphoreCanBeginRendering[i]),
-		               "Cannot create the Presentation Semaphore");
+			NULL, &this->platformHandles->semaphoreCanBeginRendering[i]),
+			"Cannot create the Presentation Semaphore");
 		vkSuccessOrDie(vk::CreateSemaphore(this->platformHandles->context.device, &semaphoreCreateInfo,
-		                                   NULL, &this->platformHandles->semaphoreCanPresent[i]),
-		               "Cannot create the Presentation Semaphore");
+			NULL, &this->platformHandles->semaphoreCanPresent[i]),
+			"Cannot create the Presentation Semaphore");
 		vkSuccessOrDie(vk::CreateSemaphore(this->platformHandles->context.device, &semaphoreCreateInfo,
-		                                   NULL, &this->platformHandles->semaphoreImageAcquired[i]),
-		               "Cannot create the Swapchain Image Acquisition Semaphore");
+			NULL, &this->platformHandles->semaphoreImageAcquired[i]),
+			"Cannot create the Swapchain Image Acquisition Semaphore");
 		vkSuccessOrDie(vk::CreateFence(this->platformHandles->context.device, &fenceCreateInfo,
-		                               NULL, &this->platformHandles->fencePrePresent[i]), "Failed to create fence");
+			NULL, &this->platformHandles->fencePrePresent[i]), "Failed to create fence");
 		vkSuccessOrDie(vk::CreateFence(this->platformHandles->context.device, &fenceCreateInfo,
-		                               NULL, &this->platformHandles->fenceRender[i]), "Failed to create fence");
+			NULL, &this->platformHandles->fenceRender[i]), "Failed to create fence");
 		vkSuccessOrDie(vk::CreateFence(this->platformHandles->context.device, &fenceCreateInfo,
-		                               NULL, &this->platformHandles->fenceAcquire[i]), "Failed to create fence");
+			NULL, &this->platformHandles->fenceAcquire[i]), "Failed to create fence");
 	}
 
 	vkSuccessOrDie(vk::CreateFence(this->platformHandles->context.device, &fenceCreateInfo,
-	                               NULL, &this->platformHandles->fencePrePresent[this->displayHandle->swapChainLength]),
-	               "Failed to create fence");
+		NULL, &this->platformHandles->fencePrePresent[this->displayHandle->swapChainLength]),
+		"Failed to create fence");
 	vkSuccessOrDie(vk::CreateFence(this->platformHandles->context.device, &fenceCreateInfo,
-	                               NULL, &this->platformHandles->fenceAcquire[this->displayHandle->swapChainLength]),
-	               "Failed to create fence");
+		NULL, &this->platformHandles->fenceAcquire[this->displayHandle->swapChainLength]),
+		"Failed to create fence");
 	vkSuccessOrDie(vk::CreateSemaphore(this->platformHandles->context.device, &semaphoreCreateInfo,
-	                                   NULL, &this->platformHandles->semaphoreImageAcquired[this->displayHandle->swapChainLength]),
-	               "Cannot create the Swapchain Image Acquisition Semaphore");
+		NULL, &this->platformHandles->semaphoreImageAcquired[this->displayHandle->swapChainLength]),
+		"Cannot create the Swapchain Image Acquisition Semaphore");
 }
 
 static void inline setImageLayout(VkCommandBuffer& cmd, VkImageLayout oldLayout, VkImageLayout newLayout,
-                                  VkImageAspectFlags aspectMask, VkAccessFlags srcAccessMask, VkImage image)
+	VkImageAspectFlags aspectMask, VkAccessFlags srcAccessMask, VkImage image)
 {
 	VkImageMemoryBarrier imageMemBarrier = {};
 	imageMemBarrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
@@ -1833,25 +1833,25 @@ static void inline setImageLayout(VkCommandBuffer& cmd, VkImageLayout oldLayout,
 	if (newLayout == VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL)
 	{
 		imageMemBarrier.dstAccessMask =
-		  VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+			VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
 	}
 
 	if (newLayout == VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL)
 	{
 		imageMemBarrier.dstAccessMask =
-		  VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT;
+			VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT;
 	}
 
 	if (newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL)
 	{
 		/* Make sure any Copy or CPU writes to image are flushed */
 		imageMemBarrier.dstAccessMask =
-		  VK_ACCESS_SHADER_READ_BIT | VK_ACCESS_INPUT_ATTACHMENT_READ_BIT;
+			VK_ACCESS_SHADER_READ_BIT | VK_ACCESS_INPUT_ATTACHMENT_READ_BIT;
 	}
 
 	VkImageMemoryBarrier* memBarries = &imageMemBarrier;
 	vk::CmdPipelineBarrier(cmd, VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT, VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT, 0, 0, NULL, 0,
-	                       NULL, 1, memBarries);
+		NULL, 1, memBarries);
 }
 
 void App::setInitialSwapchainLayouts()
@@ -1869,16 +1869,16 @@ void App::setInitialSwapchainLayouts()
 		if (i == this->platformHandles->swapIndex)
 		{
 			setImageLayout(cmdImgLayoutTrans, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL,
-			               VK_IMAGE_ASPECT_COLOR_BIT, 0, this->displayHandle->onscreenFbo.colorImages[i]);
+				VK_IMAGE_ASPECT_COLOR_BIT, 0, this->displayHandle->onscreenFbo.colorImages[i]);
 		}
 		else// set all other swapchains to present so they will be transformed properly later.
 		{
 			setImageLayout(cmdImgLayoutTrans, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR,
-			               VK_IMAGE_ASPECT_COLOR_BIT, 0, this->displayHandle->onscreenFbo.colorImages[i]);
+				VK_IMAGE_ASPECT_COLOR_BIT, 0, this->displayHandle->onscreenFbo.colorImages[i]);
 		}
 		setImageLayout(cmdImgLayoutTrans, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL,
-		               VK_IMAGE_ASPECT_DEPTH_BIT | (this->displayHandle->onscreenFbo.depthStencilHasStencil ? VK_IMAGE_ASPECT_STENCIL_BIT : 0),
-		               0, this->displayHandle->onscreenFbo.depthStencilImage[i].first);
+			VK_IMAGE_ASPECT_DEPTH_BIT | (this->displayHandle->onscreenFbo.depthStencilHasStencil ? VK_IMAGE_ASPECT_STENCIL_BIT : 0),
+			0, this->displayHandle->onscreenFbo.depthStencilImage[i].first);
 	}
 
 	vk::EndCommandBuffer(cmdImgLayoutTrans);
@@ -1940,9 +1940,9 @@ void App::initPostPresentBarrierCommandBuffer()
 		barrier.image = this->displayHandle->onscreenFbo.colorImages[swapIndex];
 		vk::BeginCommandBuffer(this->platformHandles->postPresentCmdBuffer[swapIndex], &beginnfo);
 		vk::CmdPipelineBarrier(this->platformHandles->postPresentCmdBuffer[swapIndex],
-		                       VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
-		                       VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT, 0, 0, NULL, 0,
-		                       NULL, 1, &barrier);
+			VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+			VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT, 0, 0, NULL, 0,
+			NULL, 1, &barrier);
 		vk::EndCommandBuffer(this->platformHandles->postPresentCmdBuffer[swapIndex]);
 	}
 }
@@ -1963,20 +1963,20 @@ void App::initGlobalState()
 	initSynchronizationObjects();
 
 	vkSuccessOrDie(vk::AcquireNextImageKHR(this->platformHandles->context.device, this->displayHandle->swapChain, uint64_t(-1),
-	                                       this->platformHandles->semaphoreImageAcquired[this->platformHandles->currentImageAcqSem],
-	                                       VK_NULL_HANDLE, &this->platformHandles->swapIndex),
-	               "Failed to acquire initial Swapchain image");
+		this->platformHandles->semaphoreImageAcquired[this->platformHandles->currentImageAcqSem],
+		VK_NULL_HANDLE, &this->platformHandles->swapIndex),
+		"Failed to acquire initial Swapchain image");
 
 	setInitialSwapchainLayouts();
 
 	initPostPresentBarrierCommandBuffer();
 
 	vk::ResetFences(this->platformHandles->context.device, 1,
-	                &this->platformHandles->fenceRender[this->platformHandles->swapIndex]);
+		&this->platformHandles->fenceRender[this->platformHandles->swapIndex]);
 }
 
 bool App::getMemoryTypeIndex(uint32_t typeBits, VkMemoryPropertyFlagBits properties,
-                             uint32_t& outTypeIndex)
+	uint32_t& outTypeIndex)
 {
 	for (uint32_t i = 0; i < 32; ++i)
 	{
@@ -1998,7 +1998,7 @@ void App::deinitGlobalState()
 	if (this->platformHandles->debugReportCallback && this->platformHandles->supportsDebugReport)
 	{
 		vk::DestroyDebugReportCallbackEXT(this->platformHandles->context.instance,
-		                                  this->platformHandles->debugReportCallback, NULL);
+			this->platformHandles->debugReportCallback, NULL);
 	}
 
 	vk::DestroyDevice(this->platformHandles->context.device, NULL);
@@ -2036,7 +2036,7 @@ VkDeviceMemory App::allocateImageDeviceMemory(VkImage image, VkMemoryRequirement
 	}
 
 	getMemoryTypeIndex(pMemoryRequirements->memoryTypeBits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT,
-	                   sMemoryAllocInfo.memoryTypeIndex);
+		sMemoryAllocInfo.memoryTypeIndex);
 	vk::AllocateMemory(this->platformHandles->context.device, &sMemoryAllocInfo, NULL, &memory);
 	vk::BindImageMemory(this->platformHandles->context.device, image, memory, 0);
 
@@ -2071,7 +2071,7 @@ VkDeviceMemory App::allocateBufferDeviceMemory(VkBuffer buffer, VkMemoryRequirem
 		exit(0);
 	}
 	getMemoryTypeIndex(pMemoryRequirements->memoryTypeBits, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT,
-	                   sMemoryAllocInfo.memoryTypeIndex);
+		sMemoryAllocInfo.memoryTypeIndex);
 	vk::AllocateMemory(this->platformHandles->context.device, &sMemoryAllocInfo, NULL, &memory);
 	vk::BindBufferMemory(this->platformHandles->context.device, buffer, memory, 0);
 
@@ -2101,7 +2101,7 @@ void App::initSurface()
 	createInfo.window = this->displayHandle->nativeDisplay;
 
 	vkSuccessOrDie(vk::CreateAndroidSurfaceKHR(this->platformHandles->context.instance, &createInfo,
-	               NULL, &displayHandle->surface), "Android surface creation");
+		NULL, &displayHandle->surface), "Android surface creation");
 
 	uint32_t numQueues = 1;
 	vk::GetPhysicalDeviceQueueFamilyProperties(this->platformHandles->context.physicalDevice, &numQueues, NULL);
@@ -2116,7 +2116,7 @@ void App::initSurface()
 	for (uint32_t i = 0; i < numQueues; ++i)
 	{
 		vkSuccessOrDie(vk::GetPhysicalDeviceSurfaceSupportKHR(this->platformHandles->context.physicalDevice, i, this->displayHandle->surface, &supportsPresent[i]),
-		               "Failed to get physical device surface support");
+			"Failed to get physical device surface support");
 	}
 	uint32_t graphicsQueueIndex = uint32_t(-1);
 	uint32_t presentQueueIndex = uint32_t(-1);
@@ -2179,8 +2179,8 @@ void App::deinitDisplayAndApplication()
 	vk::DestroySurfaceKHR(this->platformHandles->context.instance, this->displayHandle->surface, NULL);
 
 	vk::FreeCommandBuffers(this->platformHandles->context.device, this->platformHandles->commandPool,
-						   this->displayHandle->swapChainLength,
-						   this->application->cmdBuffer);
+		this->displayHandle->swapChainLength,
+		this->application->cmdBuffer);
 
 	vk::DestroyCommandPool(this->platformHandles->context.device, this->platformHandles->commandPool, NULL);
 }
@@ -2199,12 +2199,12 @@ void App::submitPostPresentBarrier(uint32_t swapchain)
 	snfo.waitSemaphoreCount = 1;
 	snfo.pSignalSemaphores = &this->platformHandles->semaphoreCanBeginRendering[this->platformHandles->swapIndex];
 	snfo.signalSemaphoreCount = (this->platformHandles->semaphoreCanBeginRendering[this->platformHandles->swapIndex]
-								 != VK_NULL_HANDLE);
+		!= VK_NULL_HANDLE);
 	VkPipelineStageFlags flags = VK_PIPELINE_STAGE_ALL_COMMANDS_BIT;
 	snfo.pWaitDstStageMask = &flags;
 
 	vkSuccessOrDie(vk::QueueSubmit(this->platformHandles->graphicsQueue, 1, &snfo,
-								   this->platformHandles->fenceAcquire[swapchain]), "Post Present Image transition error");
+		this->platformHandles->fenceAcquire[swapchain]), "Post Present Image transition error");
 }
 
 VkCommandBuffer App::createCommandBuffer()
@@ -2293,7 +2293,7 @@ extern "C" {
 			struct android_poll_source* source;
 
 			while ((ident = ALooper_pollAll(app.ready ? 0 : -1, NULL, &events,
-											(void**)&source)) >= 0)
+				(void**)&source)) >= 0)
 			{
 
 				// Process this event.
