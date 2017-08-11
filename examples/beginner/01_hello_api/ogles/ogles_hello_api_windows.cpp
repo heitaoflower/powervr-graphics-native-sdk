@@ -1,10 +1,10 @@
 /*!*********************************************************************************************************************
-\File         OGLESHelloAPI_Windows.cpp
+\File         ogles_hello_api_windows.cpp
 \Title        OpenGL ES HelloAPI Tutorial
 \Author       PowerVR by Imagination, Developer Technology Team
 \Copyright    Copyright (c) Imagination Technologies Limited.
 \brief		  Basic Tutorial that shows step-by-step how to initialize OpenGL ES 2.0, use it for drawing a triangle and terminate it.
-              Entry Point: WinMain
+Entry Point: WinMain
 ***********************************************************************************************************************/
 
 #include <windows.h>
@@ -26,7 +26,7 @@
 #define ERROR_TITLE _T("Error")
 
 // Width and height of the window
-const unsigned int WindowWidth  = 800;
+const unsigned int WindowWidth = 800;
 const unsigned int WindowHeight = 600;
 
 // Index to bind the attributes to vertex shaders
@@ -88,8 +88,8 @@ LRESULT CALLBACK handleWindowMessages(HWND nativeWindow, UINT message, WPARAM wi
 bool testEGLError(HWND nativeWindow, const char* functionLastCalled)
 {
 	/*	eglGetError returns the last error that occurred using EGL, not necessarily the status of the last called function. The user has to
-		check after every single EGL call or at least once every frame. Usually this would be for debugging only, but for this example
-		it is enabled always.
+	check after every single EGL call or at least once every frame. Usually this would be for debugging only, but for this example
+	it is enabled always.
 	*/
 	EGLint lastError = eglGetError();
 	if (lastError != EGL_SUCCESS)
@@ -113,9 +113,9 @@ bool testGLError(HWND nativeWindow, const char* functionLastCalled)
 {
 
 	/*
-		glGetError returns the last error that occurred using OpenGL ES, not necessarily the status of the last called function. The user
-		has to check after every single OpenGL ES call or at least once every frame. Usually this would be for debugging only, but for this
-		example it is enabled always
+	glGetError returns the last error that occurred using OpenGL ES, not necessarily the status of the last called function. The user
+	has to check after every single OpenGL ES call or at least once every frame. Usually this would be for debugging only, but for this
+	example it is enabled always
 	*/
 	GLenum lastError = glGetError();
 	if (lastError != GL_NO_ERROR)
@@ -147,7 +147,7 @@ bool createWindowAndDisplay(HINSTANCE applicationInstance, HWND& nativeWindow, H
 	nativeWindowDescription.hIcon = 0;
 	nativeWindowDescription.hCursor = 0;
 	nativeWindowDescription.lpszMenuName = 0;
-	nativeWindowDescription.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH);
+	nativeWindowDescription.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	nativeWindowDescription.lpszClassName = WINDOW_CLASS_NAME;
 
 	// Register the windows class with the OS.
@@ -164,8 +164,8 @@ bool createWindowAndDisplay(HINSTANCE applicationInstance, HWND& nativeWindow, H
 
 	// Create the window from the available information
 	nativeWindow = CreateWindow(WINDOW_CLASS_NAME, APPLICATION_NAME, WS_VISIBLE | WS_SYSMENU, CW_USEDEFAULT, CW_USEDEFAULT,
-	                            windowRectangle.right - windowRectangle.left, windowRectangle.bottom - windowRectangle.top,
-	                            NULL, NULL, applicationInstance, NULL);
+		windowRectangle.right - windowRectangle.left, windowRectangle.bottom - windowRectangle.top,
+		NULL, NULL, applicationInstance, NULL);
 	if (!nativeWindow)
 	{
 		MessageBox(0, _T("Failed to create the window"), ERROR_TITLE, MB_OK | MB_ICONEXCLAMATION);
@@ -198,7 +198,7 @@ bool createEGLDisplay(HDC deviceContext, EGLDisplay& eglDisplay)
 	eglDisplay = eglGetDisplay(deviceContext);
 	if (eglDisplay == EGL_NO_DISPLAY)
 	{
-		eglDisplay = eglGetDisplay((EGLNativeDisplayType) EGL_DEFAULT_DISPLAY);
+		eglDisplay = eglGetDisplay((EGLNativeDisplayType)EGL_DEFAULT_DISPLAY);
 	}
 
 	// If a display still couldn't be obtained, return an error.
@@ -292,7 +292,7 @@ bool createEGLSurface(HWND nativeWindow, EGLDisplay eglDisplay, EGLConfig eglCon
 	}
 
 	// Check for any EGL Errors
-	if (!testEGLError(nativeWindow, "eglCreateWindowSurface")) {	return false; }
+	if (!testEGLError(nativeWindow, "eglCreateWindowSurface")) { return false; }
 	return true;
 }
 
@@ -312,7 +312,7 @@ bool setupEGLContext(EGLDisplay eglDisplay, EGLConfig eglConfig, EGLSurface eglS
 	//	rather than any other API (such as OpenVG).
 
 	eglBindAPI(EGL_OPENGL_ES_API);
-	if (!testEGLError(nativeWindow, "eglBindAPI")) {	return false; }
+	if (!testEGLError(nativeWindow, "eglBindAPI")) { return false; }
 
 	//	Create a context.
 	//	EGL has to create what is known as a context for OpenGL ES. The concept of a context is OpenGL ES's way of encapsulating any
@@ -328,7 +328,7 @@ bool setupEGLContext(EGLDisplay eglDisplay, EGLConfig eglConfig, EGLSurface eglS
 
 	// Create the context with the context attributes supplied
 	eglContext = eglCreateContext(eglDisplay, eglConfig, NULL, contextAttributes);
-	if (!testEGLError(nativeWindow, "eglCreateContext")) {	return false;	}
+	if (!testEGLError(nativeWindow, "eglCreateContext")) { return false; }
 
 	//	Bind the context to the current thread.
 	//	Due to the way OpenGL uses global functions, contexts need to be made current so that any function call can operate on the correct
@@ -336,7 +336,7 @@ bool setupEGLContext(EGLDisplay eglDisplay, EGLConfig eglConfig, EGLSurface eglS
 	//	multiple contexts at the same time, users should use multiple threads and synchronise between them.
 
 	eglMakeCurrent(eglDisplay, eglSurface, eglSurface, eglContext);
-	if (!testEGLError(nativeWindow, "eglMakeCurrent")) {	return false; }
+	if (!testEGLError(nativeWindow, "eglMakeCurrent")) { return false; }
 	return true;
 }
 
@@ -371,7 +371,7 @@ bool initializeBuffer(GLuint& vertexBuffer, HWND nativeWindow)
 		0.0f, 0.4f, 0.0f
 	}; // Top Middle
 
-	// Generate a buffer object
+	   // Generate a buffer object
 	glGenBuffers(1, &vertexBuffer);
 
 	// Bind buffer as an vertex buffer so we can fill it with data
@@ -382,7 +382,7 @@ bool initializeBuffer(GLuint& vertexBuffer, HWND nativeWindow)
 	//	to modify the data until we're done with it.
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 
-	if (!testGLError(nativeWindow, "glBufferData"))	{	return false;	}
+	if (!testGLError(nativeWindow, "glBufferData")) { return false; }
 	return true;
 }
 
@@ -445,7 +445,7 @@ bool initializeShaders(GLuint& fragmentShader, GLuint& vertexShader, GLuint& sha
 
 		// Display the error in a dialog box
 		MessageBox(nativeWindow, infoLogLength > 1 ? infoLog.data() : _T("Failed to compile fragment shader. (No information)"),
-		           ERROR_TITLE, MB_OK | MB_ICONEXCLAMATION);
+			ERROR_TITLE, MB_OK | MB_ICONEXCLAMATION);
 
 		return false;
 	}
@@ -488,7 +488,7 @@ bool initializeShaders(GLuint& fragmentShader, GLuint& vertexShader, GLuint& sha
 
 		// Display the error in a dialog box
 		MessageBox(nativeWindow, infoLogLength > 1 ? infoLog : _T("Failed to compile vertex shader. (No information)"),
-		           ERROR_TITLE, MB_OK | MB_ICONEXCLAMATION);
+			ERROR_TITLE, MB_OK | MB_ICONEXCLAMATION);
 
 		delete[] infoLog;
 		return false;
@@ -522,7 +522,7 @@ bool initializeShaders(GLuint& fragmentShader, GLuint& vertexShader, GLuint& sha
 
 		// Display the error in a dialog box
 		MessageBox(nativeWindow, infoLogLength > 1 ? infoLog : _T("Failed to link GL program object. (No information)"),
-		           ERROR_TITLE, MB_OK | MB_ICONEXCLAMATION);
+			ERROR_TITLE, MB_OK | MB_ICONEXCLAMATION);
 
 		delete[] infoLog;
 		return false;
@@ -536,7 +536,7 @@ bool initializeShaders(GLuint& fragmentShader, GLuint& vertexShader, GLuint& sha
 
 	glUseProgram(shaderProgram);
 
-	if (!testGLError(nativeWindow, "glUseProgram"))	{	return false;	}
+	if (!testGLError(nativeWindow, "glUseProgram")) { return false; }
 	return true;
 }
 
@@ -551,7 +551,7 @@ bool initializeShaders(GLuint& fragmentShader, GLuint& vertexShader, GLuint& sha
 bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurface, HWND nativeWindow)
 {
 	// The message handler setup for the window system will signal this variable when the window is closed, so close the application.
-	if (HasUserQuit) {	return false;	}
+	if (HasUserQuit) { return false; }
 
 	//	Set the clear color
 	//	At the start of a frame, generally you clear the image to tell OpenGL ES that you're done with whatever was there before and want to
@@ -591,7 +591,7 @@ bool renderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 
 	// Sets the vertex data to this attribute index, with the number of floats in each position
 	glVertexAttribPointer(VertexArray, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	if (!testGLError(nativeWindow, "glVertexAttribPointer")) {	return false; }
+	if (!testGLError(nativeWindow, "glVertexAttribPointer")) { return false; }
 
 	//	Draw the triangle
 	//	glDrawArrays is a draw call, and executes the shader program using the vertices and other state set by the user. Draw calls are the
@@ -663,10 +663,10 @@ void releaseEGLState(EGLDisplay eglDisplay)
 void releaseWindowAndDisplay(HWND nativeWindow, HDC deviceContext)
 {
 	// Release the device context.
-	if (deviceContext) {	ReleaseDC(nativeWindow, deviceContext);	}
+	if (deviceContext) { ReleaseDC(nativeWindow, deviceContext); }
 
 	// Destroy the window
-	if (nativeWindow) {	DestroyWindow(nativeWindow); }
+	if (nativeWindow) { DestroyWindow(nativeWindow); }
 }
 
 /*!*********************************************************************************************************************
@@ -697,7 +697,7 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	GLuint	vertexBuffer = 0;
 
 	// Setup the windowing system, getting a window and a display
-	if (!createWindowAndDisplay(applicationInstance, nativeWindow, deviceContext)) {	goto cleanup; }
+	if (!createWindowAndDisplay(applicationInstance, nativeWindow, deviceContext)) { goto cleanup; }
 
 	// Create and Initialize an EGLDisplay from the native display
 	if (!createEGLDisplay(deviceContext, eglDisplay)) { goto cleanup; }
@@ -720,7 +720,7 @@ int WINAPI WinMain(HINSTANCE applicationInstance, HINSTANCE previousInstance, TC
 	// Renders a triangle for 800 frames using the state setup in the previous function
 	for (int i = 0; i < 800; ++i)
 	{
-		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow))	{	break;	}
+		if (!renderScene(shaderProgram, eglDisplay, eglSurface, nativeWindow)) { break; }
 	}
 
 	// Release any resources we created in the Initialize functions
