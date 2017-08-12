@@ -1,5 +1,5 @@
 :Title:
-HelloAPI
+hello_api
 
 :ShortDescription:
 Draw a triangle to the screen using hardware acceleration.
