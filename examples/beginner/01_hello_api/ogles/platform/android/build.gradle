@@ -88,7 +88,7 @@ android {
 
     tasks.whenTaskAdded { task ->
         if (task.name == 'assembleRelease') {
-            task.doFirst {
+            task.doLast {
                 copyToBin.execute()
             }
         }
