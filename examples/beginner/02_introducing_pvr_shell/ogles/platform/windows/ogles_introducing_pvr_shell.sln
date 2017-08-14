@@ -10,11 +10,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogles_introducing_pvr_shell
 		{5CAFF01D-B160-BAD0-C0DE-0000BAC1B07E} = {5CAFF01D-B160-BAD0-C0DE-0000BAC1B07E}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PVRCore", "..\..\..\..\..\..\Framework\PVRCore\Build\WindowsVC2010\PVRCore.vcxproj", "{5CAFF01D-B160-BAD0-C0DE-000000F1A5C0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PVRCore", "..\..\..\..\..\..\framework\PVRCore\Build\WindowsVC2010\PVRCore.vcxproj", "{5CAFF01D-B160-BAD0-C0DE-000000F1A5C0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PVRShell", "..\..\..\..\..\..\Framework\PVRShell\Build\WindowsVC2010\PVRShell.vcxproj", "{5CAFF01D-B160-BAD0-C0DE-000005EAF00D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PVRShell", "..\..\..\..\..\..\framework\PVRShell\Build\WindowsVC2010\PVRShell.vcxproj", "{5CAFF01D-B160-BAD0-C0DE-000005EAF00D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PVRNativeGles", "..\..\..\..\..\..\Framework\PVRNativeApi\OGLES\Build\WindowsVC2010\PVRNativeGles.vcxproj", "{5CAFF01D-B160-BAD0-C0DE-0000BAC1B07E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PVRNativeGles", "..\..\..\..\..\..\framework\PVRNativeApi\OGLES\Build\WindowsVC2010\PVRNativeGles.vcxproj", "{5CAFF01D-B160-BAD0-C0DE-0000BAC1B07E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
