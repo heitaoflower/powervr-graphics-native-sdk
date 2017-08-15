@@ -539,7 +539,6 @@ bool vk::initVulkanDevice(VkDevice device)
 	PVR_VULKAN_GET_DEVICE_POINTER(device, UnmapMemory);
 	PVR_VULKAN_GET_DEVICE_POINTER(device, UpdateDescriptorSets);
 	PVR_VULKAN_GET_DEVICE_POINTER(device, WaitForFences);
-	PVR_VULKAN_GET_DEVICE_POINTER(device, GetPhysicalDeviceSparseImageFormatProperties);
 	PVR_VULKAN_GET_DEVICE_POINTER(device, CreateSwapchainKHR);
 	PVR_VULKAN_GET_DEVICE_POINTER(device, DestroySwapchainKHR);
 	PVR_VULKAN_GET_DEVICE_POINTER(device, GetSwapchainImagesKHR);
