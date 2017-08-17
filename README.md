@@ -1,7 +1,7 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 [![Coverity Scan](https://scan.coverity.com/projects/13502/badge.svg)](https://scan.coverity.com/projects/heitaoflower-powervr-graphics-native-sdk)
 
-![vulkan](document/images/vulkan_logo.png) ![ogles](document/images/ogles_logo.png)  
+![vulkan](documentation/images/vulkan_logo.png) ![ogles](documentation/images/ogles_logo.png)  
 # powervr-graphics-native-sdk 
 C++ cross-platform 3D graphics SDK. Includes demos &amp; helper code (resource loading etc.) to speed up development of Vulkan, OpenGL ES 1.x, 2.0 &amp; 3.x applications
 
