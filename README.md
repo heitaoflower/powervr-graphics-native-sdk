@@ -9,9 +9,8 @@ C++ cross-platform 3D graphics SDK. Includes demos &amp; helper code (resource l
 ## Basics
 
 ### [01_hello_api](examples/beginner/01_hello_api/)
-<img src="./examples/beginner/01_hello_api/hello_api.png" height="72px" align="right">
+<img src="examples/beginner/01_hello_api/hello_api.png" height="72px" align="right">
 
 A basic tutorial that guides the user, step-by-step, through the process of initializing a window using the "raw" API, (Vulkan or OpenGL ES 2), drawing a triangle with a simple shader, and then terminating the window.
 
-:APIS:
-Vulkan 1.0, OpenGL ES 2.0
+APIS: Vulkan 1.0, OpenGL ES 2.0
