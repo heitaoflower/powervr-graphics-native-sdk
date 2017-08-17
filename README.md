@@ -11,6 +11,7 @@ C++ cross-platform 3D graphics SDK. Includes demos &amp; helper code (resource l
 ### [01_hello_api](examples/beginner/01_hello_api/)
 <img src="./examples/beginner/01_hello_api/hello_api.png" height="72px" align="right">
 
-Most basic example. Renders a colored triangle using an indexed vertex buffer. Vertex and index data are uploaded to device local memory using so-called "staging buffers". Uses a single pipeline with basic shaders loaded from SPIR-V and and single uniform block for passing matrices that is updated on changing the view.
+A basic tutorial that guides the user, step-by-step, through the process of initializing a window using the "raw" API, (Vulkan or OpenGL ES 2), drawing a triangle with a simple shader, and then terminating the window.
 
-This example is far more explicit than the other examples and is meant to be a starting point for learning Vulkan from the ground up. Much of the code is boilerplate that you'd usually encapsulate in helper functions and classes (which is what the other examples do).
+:APIS:
+Vulkan 1.0, OpenGL ES 2.0
