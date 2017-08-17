@@ -8,7 +8,7 @@ C++ cross-platform 3D graphics SDK. Includes demos &amp; helper code (resource l
 
 ## Basics
 
-### [Triangle](triangle/)
+### [01_hello_api](examples/beginner/01_hello_api/)
 <img src="./examples/beginner/01_hello_api/hello_api.png" height="72px" align="right">
 
 Most basic example. Renders a colored triangle using an indexed vertex buffer. Vertex and index data are uploaded to device local memory using so-called "staging buffers". Uses a single pipeline with basic shaders loaded from SPIR-V and and single uniform block for passing matrices that is updated on changing the view.
