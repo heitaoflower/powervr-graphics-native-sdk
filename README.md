@@ -17,3 +17,10 @@ C++ cross-platform 3D graphics SDK. Includes demos &amp; helper code (resource l
 A basic tutorial that guides the user, step-by-step, through the process of initializing a window using the "raw" API, (Vulkan or OpenGL ES 2), drawing a triangle with a simple shader, and then terminating the window.
 
 APIS: Vulkan 1.0, OpenGL ES 2.0
+
+### [02_introducing_pvr_shell](examples/beginner/02_introducing_pvr_shell/)
+<img src="examples/beginner/02_introducing_pvr_shell/introcuding_pvr_shell.png" height="72px" align="right">
+
+This demo deals with the PVRShell library.  The PowerVR shell handles all OS specific initialisation code, and has several built in command line features which allow for the specifying of attributes. When using the PVR Shell, the application uses the class 'pvr::Shell' as its base class, and is constructed and returned from a 'pvr::newDemo' function.
+
+APIS: Vulkan 1.0, OpenGL ES 2.0
