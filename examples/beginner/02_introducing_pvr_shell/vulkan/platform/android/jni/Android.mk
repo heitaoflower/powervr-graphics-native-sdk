@@ -29,7 +29,7 @@ include $(PREBUILT_STATIC_LIBRARY)
 endif
 
 
-# Module VulkanIntroducingPVRShell
+# Module vulkan_introducing_pvr_shell
 include $(CLEAR_VARS)
 
 LOCAL_MODULE    := vulkan_introducing_pvr_shell

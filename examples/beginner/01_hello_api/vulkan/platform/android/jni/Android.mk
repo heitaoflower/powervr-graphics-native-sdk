@@ -2,7 +2,7 @@ LOCAL_PATH := $(call my-dir)/../../..
 PVRSDKDIR := $(realpath $(call my-dir)/../../../../../../..)
 
 
-# Module VulkanHelloAPI
+# Module vulkan_hello_api
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := vulkan_hello_api

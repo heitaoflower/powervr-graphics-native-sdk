@@ -1,1 +1,1 @@
-include ../../../../../../Builds/Android/Application.mk
+include ../../../../../../builds/android/Application.mk
