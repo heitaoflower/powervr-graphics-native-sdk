@@ -19,6 +19,7 @@ bin/
 gen/
 out/
 build/
+assets/
 
 # Local configuration file (sdk path, etc)
 local.properties
