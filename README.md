@@ -1,5 +1,6 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 [![Coverity Scan](https://scan.coverity.com/projects/13502/badge.svg)](https://scan.coverity.com/projects/heitaoflower-powervr-graphics-native-sdk)
+[![Week Stars](http://starveller.sigsev.io/api/repos/heitaoflower/powervr-graphics-native-sdk/badge)](http://starveller.sigsev.io/heitaoflower/powervr-graphics-native-sdk)
 
 ![vulkan](documentation/images/vulkan_logo.png) ![ogles](documentation/images/ogles_logo.png)  
 # powervr-graphics-native-sdk 
