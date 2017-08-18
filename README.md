@@ -25,3 +25,10 @@ APIS: Vulkan 1.0, OpenGL ES 2.0
 This demo deals with the PVRShell library.  The PowerVR shell handles all OS specific initialisation code, and has several built in command line features which allow for the specifying of attributes. When using the PVR Shell, the application uses the class 'pvr::Shell' as its base class, and is constructed and returned from a 'pvr::newDemo' function.
 
 APIS: Vulkan 1.0, OpenGL ES 2.0
+
+### [03_introducing_pvr_assets](examples/beginner/03_introducing_pvr_assets/)
+<img src="examples/beginner/03_introducing_pvr_assets/introducing_pvr_assets.png" height="72px" align="right">
+
+This training course introduces the PowerVR Framework PVRAssets library, and shows how to use it to read a PowerVR Object Data (.pod) file and textures.  It goes into detail on how to open .pod files, .pvr files that have been referenced by it, and set up the cameras and lights from the .pod file. This demo also demonstrates the use of PVRNativeApi (either Vulkan or OpenGL ES), which is the API binding used in the native parts of this this SDK.
+
+APIS: Vulkan 1.0, OpenGL ES 2.0
