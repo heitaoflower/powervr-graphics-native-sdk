@@ -32,3 +32,10 @@ APIS: Vulkan 1.0, OpenGL ES 2.0
 This training course introduces the PowerVR Framework PVRAssets library, and shows how to use it to read a PowerVR Object Data (.pod) file and textures.  It goes into detail on how to open .pod files, .pvr files that have been referenced by it, and set up the cameras and lights from the .pod file. This demo also demonstrates the use of PVRNativeApi (either Vulkan or OpenGL ES), which is the API binding used in the native parts of this this SDK.
 
 APIS: Vulkan 1.0, OpenGL ES 2.0
+
+### [04_introducing_pvr_api](examples/beginner/04_introducing_pvr_api/)
+<img src="examples/beginner/04_introducing_pvr_api/introducing_pvr_api.png" height="72px" align="right">
+
+This training course demonstrates how to use the PVRApi library to render a scene from a pod file, using a .pfx effect file. PFX is both a file format and an API, and stands for PowerVR Effects. The library loads the POD file and the PFX file separately, creates a PVRAssets Model from the POD and a PVRApi Effect from the PFX file, and combines them to render the scene using the PVRApi necessary objects. Uses the PVREngineUtils library to display simple text on screen. Provided for Vulkan (with SpirV shaders) and OpenGL ES(version 2.x and 3.x shaders).
+
+APIS: Vulkan 1.0, OpenGL ES 2.0/3.0
