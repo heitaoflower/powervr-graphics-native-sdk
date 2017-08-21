@@ -70,10 +70,10 @@ FileCollection assetFiles = files(
 "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/processed_assets/GnomeWood.pvr",
 "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/processed_assets/DarkWood.pvr",
 "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/processed_assets/ClearWood.pvr",
-"${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/Vulkan/FragShader_vk.fsh",
-"${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/Vulkan/VertShader_vk.vsh",
-"${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/Vulkan/FragShader_vk.spv",
-"${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/Vulkan/VertShader_vk.spv",
+"${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/vulkan/FragShader_vk.fsh",
+"${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/vulkan/VertShader_vk.vsh",
+"${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/vulkan/FragShader_vk.spv",
+"${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/vulkan/VertShader_vk.spv",
 "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/processed_assets/GnomeToy.pod",
 
 )

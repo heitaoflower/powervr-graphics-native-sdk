@@ -70,8 +70,8 @@ android {
             "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/processed_assets/GnomeWood.pvr",
             "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/processed_assets/DarkWood.pvr",
             "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/processed_assets/ClearWood.pvr",
-            "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/OGLES/FragShader_ES2.fsh",
-            "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/OGLES/VertShader_ES2.vsh",
+            "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/ogles/FragShader_ES2.fsh",
+            "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/ogles/VertShader_ES2.vsh",
             "${pvrSdkDir}/examples/beginner/03_introducing_pvr_assets/processed_assets/GnomeToy.pod",
 
     )
