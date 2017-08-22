@@ -20,6 +20,7 @@ A basic tutorial that guides the user, step-by-step, through the process of init
 APIS: Vulkan 1.0, OpenGL ES 2.0
 
 <hr>
+
 ### [02_introducing_pvr_shell](examples/beginner/02_introducing_pvr_shell/)
 <img src="examples/beginner/02_introducing_pvr_shell/introcuding_pvr_shell.png" height="72px" align="right">
 
@@ -28,6 +29,7 @@ This demo deals with the PVRShell library.  The PowerVR shell handles all OS spe
 APIS: Vulkan 1.0, OpenGL ES 2.0
 
 <hr>
+
 ### [03_introducing_pvr_assets](examples/beginner/03_introducing_pvr_assets/)
 <img src="examples/beginner/03_introducing_pvr_assets/introducing_pvr_assets.png" height="72px" align="right">
 
@@ -36,12 +38,15 @@ This training course introduces the PowerVR Framework PVRAssets library, and sho
 APIS: Vulkan 1.0, OpenGL ES 2.0
 
 <hr>
+
 ### [04_introducing_pvr_api](examples/beginner/04_introducing_pvr_api/)
 <img src="examples/beginner/04_introducing_pvr_api/introducing_pvr_api.png" height="72px" align="right">
 
 This training course demonstrates how to use the PVRApi library to render a scene from a pod file, using a .pfx effect file. PFX is both a file format and an API, and stands for PowerVR Effects. The library loads the POD file and the PFX file separately, creates a PVRAssets Model from the POD and a PVRApi Effect from the PFX file, and combines them to render the scene using the PVRApi necessary objects. Uses the PVREngineUtils library to display simple text on screen. Provided for Vulkan (with SpirV shaders) and OpenGL ES(version 2.x and 3.x shaders).
 
 APIS: Vulkan 1.0, OpenGL ES 2.0/3.0
+
+<hr>
 
 ### [05_introducing_ui_renderer](examples/beginner/05_introducing_ui_renderer/)
 <img src="examples/beginner/05_introducing_ui_renderer/introducing_ui_renderer.png" height="72px" align="right">
