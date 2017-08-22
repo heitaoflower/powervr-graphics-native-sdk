@@ -43,8 +43,7 @@ This training course demonstrates how to use the PVRApi library to render a scen
 
 APIS: Vulkan 1.0, OpenGL ES 2.0/3.0
 
-<hr>
-### [fd](examples/beginner/05_introducing_ui_renderer/)
+### [05_introducing_ui_renderer](examples/beginner/05_introducing_ui_renderer/)
 <img src="examples/beginner/05_introducing_ui_renderer/introducing_ui_renderer.png" height="72px" align="right">
 
 This training course introduces the PVREngineUtils framework library.The user can create "Sprites" (2D elements) which can be grouped in 2D and/or 3D groups to be displayed as UI's or world text. 2D transformations (pixel and/or NDC coordinates) both single and in a group, anchoring on different parts of the screen or the group and 3D transformations of groups of sprites are all possible.
