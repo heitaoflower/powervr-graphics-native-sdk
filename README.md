@@ -39,3 +39,11 @@ APIS: Vulkan 1.0, OpenGL ES 2.0
 This training course demonstrates how to use the PVRApi library to render a scene from a pod file, using a .pfx effect file. PFX is both a file format and an API, and stands for PowerVR Effects. The library loads the POD file and the PFX file separately, creates a PVRAssets Model from the POD and a PVRApi Effect from the PFX file, and combines them to render the scene using the PVRApi necessary objects. Uses the PVREngineUtils library to display simple text on screen. Provided for Vulkan (with SpirV shaders) and OpenGL ES(version 2.x and 3.x shaders).
 
 APIS: Vulkan 1.0, OpenGL ES 2.0/3.0
+<hr>
+### [05_introducing_ui_renderer](examples/beginner/05_introducing_ui_renderer/)
+<img src="examples/beginner/05_introducing_ui_renderer/introducing_ui_renderer.png" height="72px" align="right">
+
+This training course introduces the PVREngineUtils framework library.The user can create "Sprites" (2D elements) which can be grouped in 2D and/or 3D groups to be displayed as UI's or world text. 2D transformations (pixel and/or NDC coordinates) both single and in a group, anchoring on different parts of the screen or the group and 3D transformations of groups of sprites are all possible.
+In this example, UIRendererer is used to display images and Unicode text, screen aligned and with 3D transformations. 
+
+APIS: Vulkan 1.0, OpenGL ES 2.0
