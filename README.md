@@ -18,17 +18,24 @@ C++ cross-platform 3D graphics SDK. Includes demos &amp; helper code (resource l
 A basic tutorial that guides the user, step-by-step, through the process of initializing a window using the "raw" API, (Vulkan or OpenGL ES 2), drawing a triangle with a simple shader, and then terminating the window.
 
 APIS: Vulkan 1.0, OpenGL ES 2.0
-
+<hr>
 ### [02_introducing_pvr_shell](examples/beginner/02_introducing_pvr_shell/)
 <img src="examples/beginner/02_introducing_pvr_shell/introcuding_pvr_shell.png" height="72px" align="right">
 
 This demo deals with the PVRShell library.  The PowerVR shell handles all OS specific initialisation code, and has several built in command line features which allow for the specifying of attributes. When using the PVR Shell, the application uses the class 'pvr::Shell' as its base class, and is constructed and returned from a 'pvr::newDemo' function.
 
 APIS: Vulkan 1.0, OpenGL ES 2.0
-
+<hr>
 ### [03_introducing_pvr_assets](examples/beginner/03_introducing_pvr_assets/)
 <img src="examples/beginner/03_introducing_pvr_assets/introducing_pvr_assets.png" height="72px" align="right">
 
 This training course introduces the PowerVR Framework PVRAssets library, and shows how to use it to read a PowerVR Object Data (.pod) file and textures.  It goes into detail on how to open .pod files, .pvr files that have been referenced by it, and set up the cameras and lights from the .pod file. This demo also demonstrates the use of PVRNativeApi (either Vulkan or OpenGL ES), which is the API binding used in the native parts of this this SDK.
 
 APIS: Vulkan 1.0, OpenGL ES 2.0
+<hr>
+### [04_introducing_pvr_api](examples/beginner/04_introducing_pvr_api/)
+<img src="examples/beginner/04_introducing_pvr_api/introducing_pvr_api.png" height="72px" align="right">
+
+This training course demonstrates how to use the PVRApi library to render a scene from a pod file, using a .pfx effect file. PFX is both a file format and an API, and stands for PowerVR Effects. The library loads the POD file and the PFX file separately, creates a PVRAssets Model from the POD and a PVRApi Effect from the PFX file, and combines them to render the scene using the PVRApi necessary objects. Uses the PVREngineUtils library to display simple text on screen. Provided for Vulkan (with SpirV shaders) and OpenGL ES(version 2.x and 3.x shaders).
+
+APIS: Vulkan 1.0, OpenGL ES 2.0/3.0
