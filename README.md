@@ -55,3 +55,13 @@ This training course introduces the PVREngineUtils framework library.The user ca
 In this example, UIRendererer is used to display images and Unicode text, screen aligned and with 3D transformations. 
 
 APIS: Vulkan 1.0, OpenGL ES 2.0
+
+<hr>
+
+### [06_introducing_pvr_camera](examples/beginner/06_introducing_pvr_camera/)
+<img src="examples/beginner/06_introducing_pvr_camera/introducing_pvr_camera.png" height="72px" align="right">
+
+The PVRCamera library gives a very simple, unified API to access the video feed of an iOS or Android device as a PVRApi (or OpenGL ES) texture. This demo displays this texture on the screen using a very simple shader that inverts the colours.
+Note: On android N, the Camera permission must be given to the application.
+
+APIS: OpenGL ES 2.0
