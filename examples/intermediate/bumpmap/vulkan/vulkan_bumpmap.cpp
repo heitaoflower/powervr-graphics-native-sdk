@@ -1,5 +1,5 @@
 /*!*********************************************************************************************************************
-\File         VulkanBumpMap.cpp
+\File         vulkan_bumpmap.cpp
 \Title        Bump mapping
 \Author       PowerVR by Imagination, Developer Technology Team
 \Copyright    Copyright (c) Imagination Technologies Limited.
