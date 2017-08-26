@@ -83,3 +83,14 @@ APIS: Vulkan 1.0, OpenGL ES 2.0
 This training course demonstrates how to use the framework to render a scene using multisampling feature. Uses the PVREngineUtils library to display simple text on screen. Provided for Vulkan (with SpirV shaders) and OpenGL ES(version 2.x and 3.x shaders).
 
 APIS: Vulkan 1.0
+
+<hr>
+
+### [multi_threading](examples/intermediate/multi_threading)
+<img src="examples/intermediate/multi_threading/multi_threading.png" height="72px" align="right">
+
+This training course will display a loading screen while assets are being loaded in, and then 
+switch to displaying the bust from the BumpMap demo.
+Implemented for Vulkan and OpenGL ES 2.0/3.0.
+
+APIS: Vulkan 1.0, OpenGL ES 2.0
