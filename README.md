@@ -65,3 +65,11 @@ The PVRCamera library gives a very simple, unified API to access the video feed 
 Note: On android N, the Camera permission must be given to the application.
 
 APIS: OpenGL ES 2.0
+<hr>
+
+### [bumpmap](examples/intermediate/bumpmap)
+<img src="examples/intermediate/bumpmap/bumpmap.png" height="72px" align="right">
+
+Bump mapping is a technique for simulating bumps and wrinkles on the surface of an object. This is achieved by perturbing the surface normals of the object and using the perturbed normal during the illumination calculations. The result is an apparently bumpy surface rather than a perfectly smooth surface although the surface of the underlying object is not actually changed. This technique is used extensively in graphics applications to add perceived detail to models without adding further geometry.
+
+APIS: Vulkan 1.0, OpenGL ES 2.0
