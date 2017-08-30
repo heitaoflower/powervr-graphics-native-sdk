@@ -94,3 +94,12 @@ switch to displaying the bust from the BumpMap demo.
 Implemented for Vulkan and OpenGL ES 2.0/3.0.
 
 APIS: Vulkan 1.0, OpenGL ES 2.0
+
+<hr>
+
+### [multi_view_vr](examples/intermediate/multi_view_vr)
+<img src="examples/intermediate/multi_view_vr/multi_view_vr.png" height="72px" align="right">
+
+This training course introduces the OVR_multi_view extension, and shows how to use the extension to render the scene from two different eye locations.
+
+APIS: OpenGL ES 3.0
