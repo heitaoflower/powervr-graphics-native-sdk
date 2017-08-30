@@ -131,9 +131,9 @@ In the PowerVR architecture, the user can use fast on-chip memory instead of Mul
 If running from a command line, add -forcemrt to force Multiple Render Targets rendering.
 Requires at least OpenGL ES 3.0 capability for either MRT or PLS. Requires the extension GL_EXT_shader_pixel_local_storage for PLS.
 
-APIS: OpenGL ES 3.0
+APIS: Vulkan 1.0, OpenGL ES 3.0
 
-Controls     | Descriptions
+Controls | Descriptions
 -------- | ---
 Action1 | Change the rendering mode (Object with bloom, object w/o bloom, bloom textures)
 Action2 | Increase/Decrease bloom intensity
