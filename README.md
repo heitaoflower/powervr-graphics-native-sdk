@@ -113,7 +113,7 @@ This training course demonstrates a simple implementation of a 'bloom' post proc
 
 APIS: OpenGL ES 2.0
 
-Controls:
+Controls:<br/>
 	-	Left/Right	-	Change the rendering mode (Object with bloom, object w/o bloom, bloom textures)
 	-	Up/Down	-	Increase/Decrease bloom intensity
 	-	Any Action	-	Pause
