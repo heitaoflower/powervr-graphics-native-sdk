@@ -103,3 +103,19 @@ APIS: Vulkan 1.0, OpenGL ES 2.0
 This training course introduces the OVR_multi_view extension, and shows how to use the extension to render the scene from two different eye locations.
 
 APIS: OpenGL ES 3.0
+
+<hr>
+
+### [post_processing](examples/intermediate/post_processing)
+<img src="examples/intermediate/post_processing/post_processing.png" height="72px" align="right">
+
+This training course demonstrates a simple implementation of a 'bloom' post processing effect, using multiple PVRApi Render Passes to apply the postprocessing. The bright parts of the picture are extracted in lower resolution in a post processing step, blurred and then added over the final image to create a glow around the object's borders.
+
+APIS: OpenGL ES 2.0
+
+Controls     | Descriptions
+-------- | ---
+Left/Right | Change the rendering mode (Object with bloom, object w/o bloom, bloom textures)
+Up/Down    | Increase/Decrease bloom intensity
+Any Action | Pause
+Quit       | Close the application
