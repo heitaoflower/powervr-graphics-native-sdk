@@ -119,5 +119,3 @@ Left/Right | Change the rendering mode (Object with bloom, object w/o bloom, blo
 Up/Down    | Increase/Decrease bloom intensity
 Any Action | Pause
 Quit       | Close the application
-
-You can save the current document to a file by clicking <i class="icon-hdd"></i> **Export to disk** from the <i class="icon-provider-stackedit"></i> menu panel.
