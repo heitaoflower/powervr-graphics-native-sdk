@@ -113,9 +113,28 @@ This training course demonstrates a simple implementation of a 'bloom' post proc
 
 APIS: OpenGL ES 2.0
 
-Controls     | Descriptions
+Controls | Descriptions
 -------- | ---
 Left/Right | Change the rendering mode (Object with bloom, object w/o bloom, bloom textures)
 Up/Down    | Increase/Decrease bloom intensity
 Any Action | Pause
 Quit       | Close the application
+
+<hr>
+
+### [deferred_shading](examples/advanced/deferred_shading)
+<img src="examples/advanced/deferred_shading/deferred_shading.png" height="72px" align="right">
+
+Traditional rendering algorithms submit geometry and immediately apply shading effects to the rasterized primitives. Complex shading effects may require multiple render passes to produce the final pixel color, with the geometry submitted every pass. Deferred shading is an alternative rendering technique that submits the scene geometry once, storing per-pixel attributes into local video memory to be used in the subsequent rendering passes. 
+In these later passes, light volume primitives are rendered, and the per-pixel attributes contained in the buffer are retrieved at a 1:1 mapping ratio so that each pixel is shaded individually.
+In the PowerVR architecture, the user can use fast on-chip memory instead of Multiple Render Targets, by utilising the Pixel Local Storage extension.
+If running from a command line, add -forcemrt to force Multiple Render Targets rendering.
+Requires at least OpenGL ES 3.0 capability for either MRT or PLS. Requires the extension GL_EXT_shader_pixel_local_storage for PLS.
+
+APIS: Vulkan 1.0, OpenGL ES 3.0
+
+Controls | Descriptions
+-------- | ---
+Action1 | Change the rendering mode (Object with bloom, object w/o bloom, bloom textures)
+Action2 | Increase/Decrease bloom intensity
+Quit    | Close the application
