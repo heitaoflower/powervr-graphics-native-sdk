@@ -171,3 +171,18 @@ Controls | Descriptions
 -------- | ---
 Left/Right | Change UI Page
 Quit    | Close the application
+
+<hr>
+
+### [glass](examples/advanced/glass)
+<img src="examples/advanced/glass/glass.png" height="72px" align="right">
+
+This example shows a technique to maintain a dynamic environment map by rendering both hemispheres of the scene to two halves of a single rectangular texture. In addition, this also demonstrates rendering skyboxes with a full screen quad, reflection and refraction with chromatic dispersion. Shaders available for OpenGL ES 2.x and 3.x.
+
+APIS: Vulkan 1.0, OpenGL ES 2.0/3.0
+
+Controls | Descriptions
+-------- | ---
+Left/Right  | Change the effect between combinations of Reflection and Refraction/Chromatic Dispersion
+Up/Down     | Look up or down
+Quit        | Close the application
