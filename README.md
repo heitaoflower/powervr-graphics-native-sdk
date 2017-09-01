@@ -157,3 +157,17 @@ Controls | Descriptions
 Action1 | Change the rendering mode (Object with bloom, object w/o bloom, bloom textures)
 Action2 | Increase/Decrease bloom intensity
 Quit    | Close the application
+
+<hr>
+
+### [example_ui](examples/advanced/example_ui)
+<img src="examples/advanced/example_ui/example_ui.png" height="72px" align="right">
+
+Rendering graphical user interfaces can quickly become overly complex. The PVREngineUtils can assist in rendering a lot of sprites with different complicated transformations, while remaining crisp and responsive. Usability and performance optimizations can both be foun in this example, such as UIRenderer transformation groups and texture atlases. Shaders available for OpenGL ES 2.x and 3.x.
+
+APIS: Vulkan 1.0, OpenGL ES 2.0/3.0
+
+Controls | Descriptions
+-------- | ---
+Left/Right | Change UI Page
+Quit    | Close the application
