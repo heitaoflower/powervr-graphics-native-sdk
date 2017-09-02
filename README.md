@@ -238,3 +238,17 @@ Controls | Descriptions
 Quit     | Close demo
 Up/Down  | Select a counter from the available list of HW counters
 Action1  | Add/remove selected counter to the graph
+
+<hr>
+
+### [pvr_scope_remote](examples/advanced/pvr_scope_remote)
+<img src="examples/advanced/pvr_scope_remote/pvr_scope_remote.png" height="72px" align="right">
+
+This example shows how to use the editable data and custom mark functionality of PVRScope. PVRTune must be running and connected to an instance of PVRPerfServer running on the target device for this demo to function. You can then edit from the PVRTune GUI any variables that the application has exposed, in this case the shaders and material properties of the statue displayed.
+
+APIS: OpenGL ES 2.0/3.0
+
+Controls | Descriptions
+-------- | ---
+Quit     | Close demo
+PVRTune  | Control demo variables through PVRTune
