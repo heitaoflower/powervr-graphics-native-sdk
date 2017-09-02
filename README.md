@@ -252,3 +252,21 @@ Controls | Descriptions
 -------- | ---
 Quit     | Close demo
 PVRTune  | Control demo variables through PVRTune
+
+
+<hr>
+
+### [skinning](examples/advanced/skinning)
+<img src="examples/advanced/skinning/skinning.png" height="72px" align="right">
+
+The Skinning demo shows a Skinned Character in combination with bump mapping. Skinning is the act of animating a vertex over time given a set (palette) of matrices and a known set of blend weights assigned to those matrices. For each frame the Matrix Palette is recomputed based on time. PVRAssets and POD files support skinning. either full transformation Matrices, or Quaternion rotation with Scaling and Translation vectors. The provided POD file contains matrix animation.
+This example is using BoneBatching, which separates the mesh in smaller matrix palettes (Bone Batches) so that they can fit in the maximum number of allowed Uniform variables.
+Up to 4 matrices  from the palette, along with 4 weights can used for each vertext by the vertex shader to update the position to obtain the current animation frame position.
+Versions provided for Vulkan, OpenGL ES 2.0 and OpenGL ES 3.0
+
+APIS: Vulkan 1.0, OpenGL ES 2.0/3.0
+
+Controls | Descriptions
+-------- | ---
+Esc          | Close
+Action1/2/3  | Pause
