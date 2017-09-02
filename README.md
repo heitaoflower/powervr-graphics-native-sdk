@@ -215,7 +215,6 @@ Esc  | Close
 <img src="examples/advanced/particle_system/particle_system.png" height="72px" align="right">
 
 The demo utilises GPGPU (GPU Compute) to implement a particle system, which advanced and then rendered every frame, without any CPU editing of the data. Particle systems are techniques that use a large amount of sprites to simulate phenomena that would be difficult to reproduce with conventional rendering techniques. Furthermore, it also highlights the interaction between the Compute and the Rendering part of a simulation.
-Requires OpenGL ES 3.1 capable platform.
 
 APIS: OpenGL ES 3.1
 
@@ -224,3 +223,18 @@ Controls | Descriptions
 Quit  | Close demo
 Lef/Right  | Decrease/increase number of particles
 Up/Down  | Switch between GPU Compute and CPU Particle System implementation
+
+<hr>
+
+### [pvr_scope_example](examples/advanced/pvr_scope_example)
+<img src="examples/advanced/pvr_scope_example/pvr_scope_example.png" height="72px" align="right">
+
+This demo uses a simple PBR-style shader and shows the use of PVRScope that allows an application to return performance statistics from the GPU in real time. It uses the example graphing code to render a graph of the selected counters on the screen. For further details, refer to the PVRScope User Manual. 
+
+APIS: OpenGL ES 2.0/3.0
+
+Controls | Descriptions
+-------- | ---
+Quit     | Close demo
+Up/Down  | Select a counter from the available list of HW counters
+Action1  | Add/remove selected counter to the graph
