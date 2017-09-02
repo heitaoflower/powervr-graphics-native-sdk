@@ -36,8 +36,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9DAFEE32-19F6-4410-AA09-2B564FB86F62}</ProjectGuid>
-    <RootNamespace>OGLESPVRScopeExample</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <RootNamespace>VulkanPVRScopeRemote</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup>
@@ -86,7 +85,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MinimalRebuild>true</MinimalRebuild>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
@@ -104,14 +103,14 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\..\..\..\..\builds\windows\x86_32\lib;..\..\..\..\..\..\framework\Bin\WindowsVC2010\$(Configuration)_$(PlatformArchitecture);</AdditionalLibraryDirectories>
-      <AdditionalDependencies>PVRScopeDeveloper.lib;PVRCore.lib;PVRAssets.lib;PVRNativeGles.lib;PVRGles.lib;PVRShell.lib;PVREngineUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>PVRScopeDeveloper.lib;PVRCore.lib;PVRAssets.lib;PVRNativeVulkan.lib;PVRVulkan.lib;PVRShell.lib;PVREngineUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MinimalRebuild>true</MinimalRebuild>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
@@ -136,7 +135,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MinimalRebuild>true</MinimalRebuild>
       <PreprocessorDefinitions>DEBUG;_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -154,14 +153,14 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\..\..\..\..\builds\windows\x86_64\lib;..\..\..\..\..\..\framework\Bin\WindowsVC2010\$(Configuration)_$(PlatformArchitecture);</AdditionalLibraryDirectories>
-      <AdditionalDependencies>PVRScopeDeveloper.lib;PVRCore.lib;PVRAssets.lib;PVRNativeGles.lib;PVRGles.lib;PVRShell.lib;PVREngineUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>PVRScopeDeveloper.lib;PVRCore.lib;PVRAssets.lib;PVRNativeVulkan.lib;PVRVulkan.lib;PVRShell.lib;PVREngineUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MinimalRebuild>true</MinimalRebuild>
       <PreprocessorDefinitions>PVRAPI_DYNAMIC_LIBRARY;DEBUG;_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -188,8 +187,8 @@
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -209,7 +208,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\..\..\..\..\..\builds\windows\x86_32\lib;..\..\..\..\..\..\framework\Bin\WindowsVC2010\$(Configuration)_$(PlatformArchitecture);</AdditionalLibraryDirectories>
-      <AdditionalDependencies>PVRScopeDeveloper.lib;PVRCore.lib;PVRAssets.lib;PVRNativeGles.lib;PVRGles.lib;PVRShell.lib;PVREngineUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>PVRScopeDeveloper.lib;PVRCore.lib;PVRAssets.lib;PVRNativeVulkan.lib;PVRVulkan.lib;PVRShell.lib;PVREngineUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
@@ -218,8 +217,8 @@
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -248,7 +247,7 @@
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
@@ -268,8 +267,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\..\..\..\..\..\builds\windows\x86_64\lib;..\..\..\..\..\..\Framework\Bin\WindowsVC2010\$(Configuration)_$(PlatformArchitecture);</AdditionalLibraryDirectories>
-      <AdditionalDependencies>PVRScopeDeveloper.lib;PVRCore.lib;PVRAssets.lib;PVRNativeGles.lib;PVRGles.lib;PVRShell.lib;PVREngineUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\builds\windows\x86_64\lib;..\..\..\..\..\..\framework\Bin\WindowsVC2010\$(Configuration)_$(PlatformArchitecture);</AdditionalLibraryDirectories>
+      <AdditionalDependencies>PVRScopeDeveloper.lib;PVRCore.lib;PVRAssets.lib;PVRNativeVulkan.lib;PVRVulkan.lib;PVRShell.lib;PVREngineUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
@@ -278,7 +277,7 @@
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\builds\include;..\..\..\..\..\..\framework;</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
@@ -303,37 +302,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\ogles_pvr_scope_example.cpp" />
-    <ClCompile Include="..\..\..\pvr_scope_graph.cpp" />
+    <ClCompile Include="..\..\vulkan_pvr_scope_remote.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\pvr_scope_graph.h" />
     <ClInclude Include="..\..\..\..\..\..\builds\windows\resources\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\..\..\..\..\builds\windows\resources\shared.rc" />
-    <ResourceCompile Include="ogles_pvr_scope_example.rc" />
+    <ResourceCompile Include="vulkan_pvr_scope_remote.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\processed_assets\scene.pod">
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\FragShader_ES2.fsh">
+    <None Include="..\..\FragShader_vk.fsh">
     </None>
-    <None Include="..\..\FragShader_ES3.fsh">
+    <None Include="..\..\VertShader_vk.vsh">
     </None>
-    <None Include="..\..\VertShader_ES2.vsh">
+    <None Include="..\..\FragShader_vk.fsh.spv">
     </None>
-    <None Include="..\..\VertShader_ES3.vsh">
-    </None>
-    <None Include="..\..\GraphFragShader_ES2.fsh">
-    </None>
-    <None Include="..\..\GraphFragShader_ES3.fsh">
-    </None>
-    <None Include="..\..\GraphVertShader_ES2.vsh">
-    </None>
-    <None Include="..\..\GraphVertShader_ES3.vsh">
+    <None Include="..\..\VertShader_vk.vsh.spv">
     </None>
   </ItemGroup>
   <ItemGroup>

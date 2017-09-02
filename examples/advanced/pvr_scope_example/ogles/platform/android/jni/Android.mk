@@ -56,7 +56,7 @@ ifneq "$(MAKECMDGOALS)" "clean"
 # Prebuilt module PVRScopeDeveloper
 include $(CLEAR_VARS)
 LOCAL_MODULE := PVRScopeDeveloper
-LOCAL_SRC_FILES := ../../../../builds/android/$(TARGET_ARCH_ABI)/Lib/libPVRScopeDeveloper.a
+LOCAL_SRC_FILES := ../../../../builds/android/$(TARGET_ARCH_ABI)/lib/libPVRScopeDeveloper.a
 include $(PREBUILT_STATIC_LIBRARY)
 endif
 

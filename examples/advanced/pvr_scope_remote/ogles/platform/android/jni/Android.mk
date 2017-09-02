@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)/../../..
 PVRSDKDIR := $(realpath $(call my-dir)/../../../../../../..)
 
-ASSETDIR := $(PVRSDKDIR)/examples/advanced/pvr_scope_example/vulkan/platform/android/assets
+ASSETDIR := $(PVRSDKDIR)/examples/advanced/pvr_scope_remote/ogles/platform/android/assets
 
 
 ifneq "$(MAKECMDGOALS)" "clean"
@@ -21,18 +21,18 @@ include $(PREBUILT_STATIC_LIBRARY)
 endif
 
 ifneq "$(MAKECMDGOALS)" "clean"
-# Prebuilt module PVRVulkan
+# Prebuilt module PVRGles
 include $(CLEAR_VARS)
-LOCAL_MODULE := PVRVulkan
-LOCAL_SRC_FILES := $(PVRSDKDIR)/framework/Bin/Android/local/$(TARGET_ARCH_ABI)/libPVRVulkan.a
+LOCAL_MODULE := PVRGles
+LOCAL_SRC_FILES := $(PVRSDKDIR)/framework/Bin/Android/local/$(TARGET_ARCH_ABI)/libPVRGles.a
 include $(PREBUILT_STATIC_LIBRARY)
 endif
 
 ifneq "$(MAKECMDGOALS)" "clean"
-# Prebuilt module PVRNativeVulkan
+# Prebuilt module PVRNativeGles
 include $(CLEAR_VARS)
-LOCAL_MODULE := PVRNativeVulkan
-LOCAL_SRC_FILES := $(PVRSDKDIR)/framework/Bin/Android/local/$(TARGET_ARCH_ABI)/libPVRNativeVulkan.a
+LOCAL_MODULE := PVRNativeGles
+LOCAL_SRC_FILES := $(PVRSDKDIR)/framework/Bin/Android/local/$(TARGET_ARCH_ABI)/libPVRNativeGles.a
 include $(PREBUILT_STATIC_LIBRARY)
 endif
 
@@ -61,27 +61,25 @@ include $(PREBUILT_STATIC_LIBRARY)
 endif
 
 
-# Module vulkan_pvr_scope_example
-include $(CLEAR_VARS)
+# Module OGLESPVRScopeRemote
+include $(ogles_pvr_scope_remote)
 
-LOCAL_MODULE    := vulkan_pvr_scope_example
+LOCAL_MODULE    := ogles_pvr_scope_remote
 
 ### Add all source file names to be included in lib separated by a whitespace
-LOCAL_SRC_FILES  := vulkan_pvr_scope_example.cpp \
-                    ../pvr_scope_graph.cpp
+LOCAL_SRC_FILES  := ogles_pvr_scope_remote.cpp
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/.. \
-                    $(PVRSDKDIR)/framework \
+LOCAL_C_INCLUDES := $(PVRSDKDIR)/framework \
                     $(PVRSDKDIR)/builds/include
 
 
 
 LOCAL_LDLIBS := -ldl \
-                -llog \
                 -latomic \
+                -llog \
                 -landroid
 
-LOCAL_STATIC_LIBRARIES := PVREngineUtils PVRVulkan PVRNativeVulkan PVRAssets PVRCore PVRScopeDeveloper android_native_app_glue
+LOCAL_STATIC_LIBRARIES := PVREngineUtils PVRGles PVRNativeGles PVRAssets PVRCore PVRScopeDeveloper android_native_app_glue
 
 
 LOCAL_CFLAGS += $(SDK_BUILD_FLAGS)

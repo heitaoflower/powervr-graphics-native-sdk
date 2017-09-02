@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)/../../..
 PVRSDKDIR := $(realpath $(call my-dir)/../../../../../../..)
 
-ASSETDIR := $(PVRSDKDIR)/examples/advanced/pvr_scope_example/vulkan/platform/android/assets
+ASSETDIR := $(PVRSDKDIR)/examples/advanced/pvr_scope_remote/vulkan/platform/android/assets
 
 
 ifneq "$(MAKECMDGOALS)" "clean"
@@ -61,17 +61,15 @@ include $(PREBUILT_STATIC_LIBRARY)
 endif
 
 
-# Module vulkan_pvr_scope_example
+# Module vulkan_pvr_scope_remote
 include $(CLEAR_VARS)
 
-LOCAL_MODULE    := vulkan_pvr_scope_example
+LOCAL_MODULE    := vulkan_pvr_scope_remote
 
 ### Add all source file names to be included in lib separated by a whitespace
-LOCAL_SRC_FILES  := vulkan_pvr_scope_example.cpp \
-                    ../pvr_scope_graph.cpp
+LOCAL_SRC_FILES  := vulkan_pvr_scope_remote.cpp
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/.. \
-                    $(PVRSDKDIR)/framework \
+LOCAL_C_INCLUDES := $(PVRSDKDIR)/framework \
                     $(PVRSDKDIR)/builds/include
 
 
