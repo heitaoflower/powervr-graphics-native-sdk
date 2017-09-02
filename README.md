@@ -186,3 +186,25 @@ Controls | Descriptions
 Left/Right  | Change the effect between combinations of Reflection and Refraction/Chromatic Dispersion
 Up/Down     | Look up or down
 Quit        | Close the application
+
+<hr>
+
+### [gnome_horde](examples/advanced/gnome_horde)
+<img src="examples/advanced/gnome_horde/gnome_horde.png" height="72px" align="right">
+
+The GnomeHorde divides its world into tiles, each containing a small number of objects.
+It uses 3 groups of threads - the Main thread, which kicks all other tasks and does the
+actual command buffer submisison (rendering), a number of Visibility threads, each of 
+which processes large groups of tiles, and a number of Tile Processing threads, each of
+which generate command buffers for a tile, when required (i.e. when either the tile has
+just become visible, or when the tile's Level Of Detail has changed).
+The communication of the threads is abstracted using Producer-Consumer Queues passing the
+coordinates of tiles as parameters.
+When all generation is done, the main thread collects all secondary command buffers and
+submits them to the GPU rendering Queue and allows the frame to proceed.
+
+APIS: Vulkan 1.0
+
+Controls | Descriptions
+-------- | ---
+Esc  | Close
